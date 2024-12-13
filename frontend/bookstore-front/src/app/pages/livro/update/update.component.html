@@ -1,0 +1,116 @@
+<div class="container main-container">
+    <h1>Editar Livro</h1>
+    <div class="row">
+        <div class="col-md-10">
+            <form novalidate="novalidate" (ngSubmit)="update()" [formGroup]="updateForm">
+                <hr>
+                <div class="alert alert-danger" *ngIf="errors.length > 0">
+                    <h3 id="msgRetorno">Opa! Alguma coisa não deu certo:</h3>
+                    <ul>
+                        <li *ngFor="let error of errors">{{ error }}</li>
+                    </ul>
+                </div>
+
+                <!-- Título -->
+                <div class="form-group row mb-3">
+                    <label class="col-sm-2 col-form-label" for="titulo">Título</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="titulo" type="text" placeholder="Título (requerido)"
+                            formControlName="titulo" maxlength="20"
+                            [ngClass]="{'is-invalid': displayMessage['titulo']}" />
+                        <span class="text-danger" *ngIf="displayMessage['titulo']">
+                            <p [innerHTML]="displayMessage['titulo']"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Editora -->
+                <div class="form-group row mb-3">
+                    <label class="col-sm-2 col-form-label" for="editora">Editora</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="editora" type="text" placeholder="Editora (requerido)"
+                            formControlName="editora" maxlength="40"
+                            [ngClass]="{'is-invalid': displayMessage['editora']}" />
+                        <span class="text-danger" *ngIf="displayMessage['editora']">
+                            <p [innerHTML]="displayMessage['editora']"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Edição -->
+                <div class="form-group row mb-3">
+                    <label class="col-sm-2 col-form-label" for="edicao">Edição</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="edicao" type="number" placeholder="Edição (requerido)"
+                            formControlName="edicao" maxlength="20"
+                            [ngClass]="{'is-invalid': displayMessage['edicao']}" />
+                        <span class="text-danger" *ngIf="displayMessage['edicao']">
+                            <p [innerHTML]="displayMessage['edicao']"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Ano de Publicação -->
+                <div class="form-group row mb-3">
+                    <label class="col-sm-2 col-form-label" for="anoPublicacao">Ano Publicação</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="anoPublicacao" type="number"
+                            placeholder="Ano Publicação (requerido)" formControlName="anoPublicacao" maxlength="20"
+                            [ngClass]="{'is-invalid': displayMessage['anoPublicacao']}" />
+                        <span class="text-danger" *ngIf="displayMessage['anoPublicacao']">
+                            <p [innerHTML]="displayMessage['anoPublicacao']"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Valor -->
+                <div class="form-group row mb-3">
+                    <label class="col-sm-2 col-form-label" for="valor">Valor</label>
+                    <div class="col-sm-10">
+                        <input currencyMask
+                            [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left', allowNegative: false }"
+                            class="form-control" id="valor" type="text" placeholder="Valor (requerido)"
+                            formControlName="valor" [ngClass]="{'is-invalid': displayMessage['valor']}" />
+                        <span class="text-danger" *ngIf="displayMessage['valor']">
+                            <p [innerHTML]="displayMessage['valor']"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Autores -->
+                <div class="form-group row mb-3">
+                    <label class="col-sm-2 col-form-label" for="autores">Autores</label>
+                    <div class="col-sm-10">
+                        <select id="autores" class="form-control" multiple formControlName="autores">
+                            <option *ngFor="let autor of autores" [value]="autor.id">{{ autor.nome }}</option>
+                        </select>
+                        <div class="text-danger"
+                            *ngIf="updateForm.get('autores')?.invalid && updateForm.get('autores')?.touched">
+                            Selecione pelo menos um autor.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dropdown para Assuntos -->
+                <div class="form-group row mb-3">
+                    <label class="col-sm-2 col-form-label" for="assuntos">Assuntos</label>
+                    <div class="col-sm-10">
+                        <select id="assuntos" class="form-control" multiple formControlName="assuntos">
+                            <option *ngFor="let assunto of assuntos" [value]="assunto.id">{{ assunto.descricao }}
+                            </option>
+                        </select>
+                        <div class="text-danger"
+                            *ngIf="updateForm.get('assuntos')?.invalid && updateForm.get('assuntos')?.touched">
+                            Selecione pelo menos um assunto.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group d-flex align-items-center mt-4">
+                    <button class="btn btn-success me-2" id="Gravar" [disabled]="!updateForm.valid"
+                        type="submit">Gravar</button>
+                    <button class="btn btn-info" id="Voltar" [routerLink]="['/livro/read']">Voltar</button>
+                </div>
+            </form>
+        </div>
+    </div>

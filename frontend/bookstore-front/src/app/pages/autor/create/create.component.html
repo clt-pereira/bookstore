@@ -1,0 +1,30 @@
+<div class="container main-container">
+    <h1>Criar um Autor</h1>
+    <div class="row">
+        <div class="col-md-10">
+            <form novalidate="novalidate" (ngSubmit)="create()" [formGroup]="createForm">
+                <hr>
+                <div class="alert alert-danger" *ngIf="errors.length > 0">
+                    <h3 id="msgRetorno">Opa! Alguma coisa não deu certo:</h3>
+                    <ul>
+                        <li *ngFor="let error of errors">{{ error }}</li>
+                    </ul>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">Nome</label>
+                    <div>
+                        <input class="form-control" id="nome" type="text" placeholder="Nome (requerido)" formControlName="nome" maxlength="40" [ngClass]="{'is-invalid': displayMessage['nome'] }" />
+                        <span class="text-danger" *ngIf="displayMessage['nome']">
+                            <p [innerHTML]="displayMessage['nome']"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group d-flex align-items-center mt-4">
+                    <button class="btn btn-success me-2" id="Gravar" [disabled]="!createForm.valid" type="submit">Gravar</button>
+                    <button class="btn btn-info" id="Voltar" [routerLink]="['/autor/read']">Voltar</button>
+                </div>
+            </form>
+        </div>
+    </div>
