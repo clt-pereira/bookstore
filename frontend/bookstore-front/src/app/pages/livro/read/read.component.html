@@ -2,11 +2,12 @@
 
     <h1>Livros</h1>
 
-    <p>
-        <a class="btn btn-success" [routerLink]="['/livro/create']">Novo Registro</a>
-    </p>
+    <div class="form-group d-flex align-items-center mt-4 mb-4">
+        <button class="btn btn-success me-2" id="novo" [routerLink]="['/livro/create']" type="submit">Novo Registro</button>
+        <button class="btn btn-info" (click)="exportarParaExcel()">Exportar para Excel</button>
+    </div>
 
-    <table class="table table-striped table-hover">
+    <table id="livroTable" class="table table-striped table-hover">
         <thead class="table-dark">
             <tr>
                 <th scope="col">Codigo</th>
@@ -34,24 +35,24 @@
                 </td>
                 <td>
                     {{ livro.edicao }}
-                </td>                 
+                </td>
                 <td>
                     {{ livro.anoPublicacao }}
                 </td>
                 <td>
                     {{ livro.valor | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}
-                </td>                                                       
+                </td>
                 <td>
                     <ul>
-                        <li *ngFor="let autor of livro.autores">
-                            {{ autor.nome }}
+                        <li *ngFor="let autor of livro.autores; let last = last">
+                            {{ autor.nome }}<span *ngIf="!last">, </span>
                         </li>
                     </ul>
                 </td>
                 <td>
                     <ul>
-                        <li *ngFor="let assunto of livro.assuntos">
-                            {{ assunto.descricao }}
+                        <li *ngFor="let assunto of livro.assuntos; let last = last">
+                            {{ assunto.descricao }}<span *ngIf="!last">, </span>
                         </li>
                     </ul>
                 </td>

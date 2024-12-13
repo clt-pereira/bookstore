@@ -12,6 +12,7 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 import { CommonModule, registerLocaleData } from '@angular/common';
 import ptBr from '@angular/common/locales/pt';
+import { ExportAsModule, ExportAsService } from 'ngx-export-as';
 
 registerLocaleData(ptBr);
 
@@ -27,13 +28,15 @@ registerLocaleData(ptBr);
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    ExportAsModule
   ],
   providers: [
     provideHttpClient(), 
     ToastrService, 
     {
       provide: LOCALE_ID, useValue: 'pt-BR'
-    }
+    },
+    ExportAsService
   ],
   bootstrap: [AppComponent]
 })
