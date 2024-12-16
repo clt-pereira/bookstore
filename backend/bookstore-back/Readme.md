@@ -37,25 +37,25 @@ Este projeto é uma API desenvolvida em .NET Core 8 para gerenciamento de livros
 ## Endpoints Principais
 
 ### **Livros**
-- **GET** /api/livros - Lista todos os livros
-- **GET** /api/livros/{id} - Obtém um livro pelo ID
-- **POST** /api/livros - Cadastra um novo livro
-- **PUT** /api/livros/{id} - Atualiza um livro existente
-- **DELETE** /api/livros/{id} - Remove um livro
+- **GET** /api/livro - Lista todos os livros
+- **GET** /api/livro/{id} - Obtém um livro pelo ID
+- **POST** /api/livro - Cadastra um novo livro
+- **PUT** /api/livro/{id} - Atualiza um livro existente
+- **DELETE** /api/livro/{id} - Remove um livro
 
 ### **Assuntos**
-- **GET** /api/assuntos - Lista todos os assuntos
-- **GET** /api/assuntos/{id} - Obtém um assunto pelo ID
-- **POST** /api/assuntos - Cadastra um novo assunto
-- **PUT** /api/assuntos/{id} - Atualiza um assunto existente
-- **DELETE** /api/assuntos/{id} - Remove um assunto
+- **GET** /api/assunto - Lista todos os assuntos
+- **GET** /api/assunto/{id} - Obtém um assunto pelo ID
+- **POST** /api/assunto - Cadastra um novo assunto
+- **PUT** /api/assunto/{id} - Atualiza um assunto existente
+- **DELETE** /api/assunto/{id} - Remove um assunto
 
 ### **Autores**
-- **GET** /api/assuntos - Lista todos os autores
-- **GET** /api/assuntos/{id} - Obtém um autor pelo ID
-- **POST** /api/assuntos - Cadastra um novo autor
-- **PUT** /api/assuntos/{id} - Atualiza um autor existente
-- **DELETE** /api/assuntos/{id} - Remove um autor
+- **GET** /api/autor - Lista todos os autores
+- **GET** /api/autor/{id} - Obtém um autor pelo ID
+- **POST** /api/autor - Cadastra um novo autor
+- **PUT** /api/autor/{id} - Atualiza um autor existente
+- **DELETE** /api/autor/{id} - Remove um autor
 
 ## Tecnologias Utilizadas
 
