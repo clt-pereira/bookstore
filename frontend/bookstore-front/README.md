@@ -1,27 +1,95 @@
-# BookstoreFront
+# BookStore - Projeto Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.12.
+Este projeto é uma aplicação Angular para gerenciar o cadastro de livros, incluindo o relacionamento com autores e assuntos.
 
-## Development server
+## 🛠️ Tecnologias Utilizadas
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Angular:** 18.2.13 (https://github.com/angular/angular-cli)
+- **Node.js:** 22.12.0
+- **NPM:** 10.9.0
 
-## Code scaffolding
+---
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## ⚙️ Instalação
 
-## Build
+### Pré-requisitos
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Certifique-se de ter instalado:
+- **Node.js** (versão 22.12.0)
+- **NPM** (versão 10.9.0)
 
-## Running unit tests
+### Passo a passo
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. **Clone o repositório:**
+   ```bash
+   git clone https://github.com/clt-pereira/bookstore.git
+   ```
 
-## Running end-to-end tests
+2. **Navegue para o diretório do projeto:**
+   ```bash
+   cd bookstore\front-end\bookstore-front
+   ```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+3. **Instale as dependências:**
+   ```bash
+   npm install
+   ```
 
-## Further help
+4. **Inicie a aplicação:**
+   ```bash
+   ng serve
+   ```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+5. **Acesse a aplicação:**
+   - Abra o navegador e acesse: [http://localhost:4200](http://localhost:4200)
+
+---
+
+## 📚 Funcionalidades
+
+- **Cadastro de Livros:**
+  - Adicionar, editar e excluir livros.
+  - Relacionar autores e assuntos aos livros.
+
+- **Cadastro de Autores:**
+  - Gerenciar o registro de autores.
+
+- **Cadastro de Assuntos:**
+  - Gerenciar a lista de assuntos.
+
+---
+
+## 📂 Estrutura do Projeto
+
+```plaintext
+src/
+ |-- app/
+ |   |-- pages/
+ |   |-- shared/
+ |   |-- template/
+ |-- environments/
+ |-- public/
+ |   |-- assets/
+ |-- index.html
+ |-- main.ts
+```
+
+---
+
+## 🏗️ Build
+
+Gere uma versão de produção:
+```bash
+ng build --prod
+```
+
+---
+
+## 📜 Licença
+
+Este projeto está licenciado sob a [MIT License](LICENSE).
+
+---
+
+**Desenvolvido com ❤️ por [Cleiton Pereira]**
+
