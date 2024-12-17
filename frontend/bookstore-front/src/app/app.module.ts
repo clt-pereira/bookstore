@@ -1,4 +1,4 @@
-import { NgModule, LOCALE_ID } from '@angular/core';
+import { NgModule, LOCALE_ID, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -7,12 +7,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TemplateModule } from './template/template.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient } from '@angular/common/http';
-import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 import { CommonModule, registerLocaleData } from '@angular/common';
 import ptBr from '@angular/common/locales/pt';
 import { ExportAsModule, ExportAsService } from 'ngx-export-as';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 registerLocaleData(ptBr);
 
@@ -28,7 +29,8 @@ registerLocaleData(ptBr);
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    ExportAsModule
+    ExportAsModule,
+    NgxSpinnerModule,
   ],
   providers: [
     provideHttpClient(), 
@@ -38,6 +40,7 @@ registerLocaleData(ptBr);
     },
     ExportAsService
   ],
-  bootstrap: [AppComponent]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

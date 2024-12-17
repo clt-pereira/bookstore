@@ -1,7 +1,8 @@
 <div class="container main-container">
-
+    <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-scale-multiple" [fullScreen]="true">
+        <p style="color: white"> Carregando... </p>
+    </ngx-spinner>
     <h1>Livros</h1>
-
     <div class="form-group d-flex align-items-center mt-4 mb-4">
         <button class="btn btn-success me-2" id="novo" [routerLink]="['/livro/create']" type="submit">Novo Registro</button>
         <button class="btn btn-info" (click)="exportarParaExcel()">Exportar para Excel</button>

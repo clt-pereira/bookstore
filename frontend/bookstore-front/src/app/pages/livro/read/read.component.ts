@@ -3,6 +3,7 @@ import { Livro } from '../models/livro';
 import { LivroService } from '../services/livro.service';
 import { ToastrService } from 'ngx-toastr';
 import { ExportAsConfig, ExportAsService } from 'ngx-export-as';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-read',
@@ -21,14 +22,20 @@ export class ReadComponent implements OnInit {
   constructor(
     private livroService: LivroService,
     private toastrService: ToastrService,
-    private exportAsService: ExportAsService
+    private exportAsService: ExportAsService,
+    private spinner: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
+    this.spinner.show();
     this.livroService.findAll().subscribe({
       next: livros => this.livros = livros,
       error: fail => this.handlerFail(fail)
     });
+
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 1000);  
   }
 
   handlerFail(fail: any) {

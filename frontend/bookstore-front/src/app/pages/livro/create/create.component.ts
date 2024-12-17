@@ -10,6 +10,7 @@ import { AutorService } from '../../autor/services/autor.service';
 import { AssuntoService } from '../../assunto/services/assunto.service';
 import { Autor } from '../../autor/models/autor';
 import { Assunto } from '../../assunto/models/assunto';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-create',
@@ -41,7 +42,8 @@ export class CreateComponent implements OnInit, AfterViewInit {
     private autorService: AutorService,
     private assuntoService: AssuntoService,
     private router: Router,
-    private toastrService: ToastrService) {
+    private toastrService: ToastrService,
+    private spinner: NgxSpinnerService) {
 
     this.validationMessages = {
       titulo: {
@@ -79,6 +81,7 @@ export class CreateComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    this.spinner.show();
     this.createForm = this.fb.group({
       titulo: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(40)]],
       editora: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(40)]],
@@ -91,6 +94,9 @@ export class CreateComponent implements OnInit, AfterViewInit {
 
     this.carregarAutores();
     this.carregarAssuntos();
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 1000);
   }
 
   create(): void {

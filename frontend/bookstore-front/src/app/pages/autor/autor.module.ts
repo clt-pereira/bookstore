@@ -12,6 +12,7 @@ import { ReadComponent } from './read/read.component';
 import { UpdateComponent } from './update/update.component';
 import { AutorResolve } from './services/autor.resolve';
 import { DeleteComponent } from './delete/delete.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { DeleteComponent } from './delete/delete.component';
     RouterModule,
     FormsModule,
     AutorRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxSpinnerModule
   ],
   providers: [
     AutorService,

@@ -1,6 +1,9 @@
 using BookStore.Api.Configurations;
+using BookStore.Api.Exceptions;
 using BookStore.Data.Context;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +12,10 @@ builder.Services.AddControllers()
     {
         options.SuppressModelStateInvalidFilter = true;
     });
+
+builder.Services.AddProblemDetails();
+
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -51,6 +58,8 @@ if (app.Environment.IsDevelopment())
 app.UseCors("CorsPolicy");
 
 app.UseHttpsRedirection();
+
+app.UseExceptionHandler();
 
 app.UseAuthorization();
 

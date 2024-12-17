@@ -1,0 +1,31 @@
+﻿using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Mvc;
+
+namespace BookStore.Api.Exceptions;
+
+internal sealed class GlobalExceptionHandler(IProblemDetailsService problemDetailsService) : IExceptionHandler
+{
+    public async ValueTask<bool> TryHandleAsync(
+        HttpContext httpContext,
+        Exception exception,
+        CancellationToken cancellationToken)
+    {
+        httpContext.Response.StatusCode = exception switch
+        {
+            ApplicationException => StatusCodes.Status400BadRequest,
+            _ => StatusCodes.Status500InternalServerError
+        };
+
+        return await problemDetailsService.TryWriteAsync(new ProblemDetailsContext
+        {
+            HttpContext = httpContext,
+            Exception = exception,
+            ProblemDetails = new ProblemDetails
+            {
+                Type = exception.GetType().Name,
+                Title = "Ocorreu um erro inesperado no processamento da requisição.",
+                Detail = exception.Message
+            }
+        });
+    }
+}

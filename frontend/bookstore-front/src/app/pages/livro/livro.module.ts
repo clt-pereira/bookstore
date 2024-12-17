@@ -12,6 +12,7 @@ import { LivroResolve } from './services/livro.resolve';
 import { provideHttpClient } from '@angular/common/http';
 import { LivroRoutingModule } from './livro.route';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
     FormsModule,
     LivroRoutingModule,
     ReactiveFormsModule,
-    CurrencyMaskModule
+    CurrencyMaskModule,
+    NgxSpinnerModule,
   ],
   providers: [
     LivroService,

@@ -10,6 +10,7 @@ import { Autor } from '../../autor/models/autor';
 import { Assunto } from '../../assunto/models/assunto';
 import { AutorService } from '../../autor/services/autor.service';
 import { AssuntoService } from '../../assunto/services/assunto.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-update',
@@ -42,7 +43,8 @@ export class UpdateComponent implements OnInit, AfterViewInit {
     private assuntoService: AssuntoService,    
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private toastrService: ToastrService) {
+    private toastrService: ToastrService,
+    private spinner: NgxSpinnerService) {
 
       this.validationMessages = {
         titulo: {
@@ -81,6 +83,7 @@ export class UpdateComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    this.spinner.show();
     this.updateForm = this.fb.group({
       titulo: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(40)]],
       editora: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(40)]],
@@ -91,6 +94,10 @@ export class UpdateComponent implements OnInit, AfterViewInit {
       assuntos: [[], Validators.required]     
     });
 
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 1000);
+    
     this.fillForm();
   }
 

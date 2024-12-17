@@ -18,18 +18,41 @@ export abstract class BaseService{
         return response.data || {};
     }
 
-    protected handleResponseError(response: Response | any)  {
+    // protected handleResponseError(response: Response | any)  {
+    //     let customError: string[] = [];
+
+    //     if (response instanceof HttpErrorResponse) {
+
+    //         if (response.statusText === "Unknown Error") {
+    //             customError.push("Ocorreu um erro desconhecido");
+    //             response.error.errors = customError;
+    //         }
+    //     }
+
+    //     console.error(response);
+    //     return throwError(() => response);
+    // }
+
+    protected handleResponseError(response: Response | any) {
         let customError: string[] = [];
-
+    
         if (response instanceof HttpErrorResponse) {
-
-            if (response.statusText === "Unknown Error") {
-                customError.push("Ocorreu um erro desconhecido");
+            if (response.status === 400 || response.status === 500) {
+                // Verifica se há uma estrutura de erro do tipo ProblemDetails
+                if (response.error && response.error.title && response.error.detail) {
+                    customError.push(`${response.error.title}: ${response.error.detail}`);
+                } else if (response.statusText === "Unknown Error") {
+                    customError.push("Ocorreu um erro desconhecido.");
+                } else {
+                    customError.push("Erro inesperado ao processar a solicitação.");
+                }
+    
                 response.error.errors = customError;
             }
         }
-
-        console.error(response);
+    
+        console.error("Erro capturado:", response);
         return throwError(() => response);
-    }    
+    }
+    
 }

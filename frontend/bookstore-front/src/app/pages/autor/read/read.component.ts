@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Autor } from '../models/autor';
 import { AutorService } from '../services/autor.service';
 import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-read',
@@ -14,13 +15,18 @@ export class ReadComponent implements OnInit {
 
   constructor(
     private autorService: AutorService,
-    private toastrService: ToastrService) { }
+    private toastrService: ToastrService,
+    private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
+    this.spinner.show();
     this.autorService.findAll().subscribe({
       next: autores => this.autores = autores,
       error: fail => this.handlerFail(fail)
     });
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 1000);    
   }
   
   handlerFail(fail: any) {

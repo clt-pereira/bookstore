@@ -11,6 +11,7 @@ import { AssuntoRoutingModule } from './assunto.route';
 import { AssuntoService } from './services/assunto.service';
 import { AssuntoResolve } from './services/assunto.resolve';
 import { provideHttpClient } from '@angular/common/http';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { provideHttpClient } from '@angular/common/http';
     RouterModule,
     FormsModule,
     AssuntoRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxSpinnerModule
   ],
   providers: [
     AssuntoService,
