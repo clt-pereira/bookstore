@@ -23,7 +23,7 @@ internal sealed class GlobalExceptionHandler(IProblemDetailsService problemDetai
             ProblemDetails = new ProblemDetails
             {
                 Type = exception.GetType().Name,
-                Title = "Ocorreu um erro inesperado no processamento da requisição.",
+                Title = "Ocorreu um erro inesperado durante processamento da requisição.",
                 Detail = exception.Message
             }
         });
