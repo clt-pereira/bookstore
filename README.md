@@ -71,5 +71,5 @@ Este projeto é distribuído sob a licença MIT. Consulte o arquivo `LICENSE` pa
 
 ## Contato
 
-**Cleiton Pereira** - [GitHub](https://github.com/clt-pereira) - clt-pereira@hotmail.com.com
+**Cleiton Pereira** - [GitHub](https://github.com/clt-pereira) - clt-pereira@hotmail.com
 
